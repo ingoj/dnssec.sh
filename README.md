@@ -24,10 +24,14 @@ update-tlsa   : update TLSA records with new TLSA hash, needs old and new TLSA h
 Basically these command line options are pretty much self-explaining.
 
 # Examples: 
-Enable DNSSEC on a domain:
+## Enable DNSSEC on a domain
 ```
 dnssec.sh enable-dnssec domain.tld
 ```
 This will take all necessary steps to enable DNSSEC on your domain `domain.tld`, modify your zone configuration in `named.conf.local` file and output the DS key that you will need to copy & paste to your registrars website. 
 
+## Edit a zone file
+```
+dnssec.sh edit-zone domain.tld
+```
 When you want to change your zone file it is best to use `dnssec.sh edit-zone domain.tld`. This will load your configured editor (vim/emacs/nano/joe/...) and - after saving the zone file - increase your serial of your zone, check the zone file for errors and reloading the domain where there were no errors. 
